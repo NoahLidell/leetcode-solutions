@@ -37,15 +37,17 @@ Constraints:
     0 <= query_glass <= query_row < 100
 
 """
+
+
 class Solution:
     def champagneTower(self, poured: int, query_row: int, query_glass: int) -> float:
         rows = 100
-        tower = [[0.0]*(r+1) for r in range(rows)]
+        tower = [[0.0] * (r + 1) for r in range(rows)]
         tower[0][0] = poured
         for r in range(rows):
             for c in range(len(tower[r])):
-                dist = (tower[r][c]-1)/2
-                if dist > 0 and r <99:
-                    tower[r+1][c] += dist
-                    tower[r+1][c+1] += dist
+                dist = (tower[r][c] - 1) / 2
+                if dist > 0 and r < 99:
+                    tower[r + 1][c] += dist
+                    tower[r + 1][c + 1] += dist
         return min(1, tower[query_row][query_glass])
