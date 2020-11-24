@@ -28,30 +28,29 @@ impl Solution {
     pub fn search(nums: Vec<i32>, target: i32) -> bool {
         let N = nums.len();
         if N == 0 {
-            return false
+            return false;
         }
         fn dfs(a: usize, b: usize, t: i32, nums: &Vec<i32>) -> bool {
             if b - a <= 1 {
-                return nums[a..=b].contains(&t)
+                return nums[a..=b].contains(&t);
             }
-            let mid = (a + b)/2;
+            let mid = (a + b) / 2;
             if nums[mid] > nums[b] {
-                if ((nums[b] < t) && (t<= nums[mid])) {
+                if ((nums[b] < t) && (t <= nums[mid])) {
                     dfs(a, mid, t, nums)
                 } else {
                     dfs(mid + 1, b, t, nums)
                 }
             } else if nums[mid] < nums[b] {
                 if ((nums[mid] < t) && (t <= nums[b])) {
-                    dfs(mid+1, b, t, nums)
+                    dfs(mid + 1, b, t, nums)
                 } else {
                     dfs(a, mid, t, nums)
                 }
             } else {
-                dfs(mid+1, b, t, nums) || dfs(a, mid, t, nums)
+                dfs(mid + 1, b, t, nums) || dfs(a, mid, t, nums)
             }
-            
         }
-        dfs(0, N-1, target, &nums)
+        dfs(0, N - 1, target, &nums)
     }
 }
