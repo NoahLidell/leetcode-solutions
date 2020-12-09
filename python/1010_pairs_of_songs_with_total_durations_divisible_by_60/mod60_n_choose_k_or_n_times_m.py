@@ -40,9 +40,9 @@ class Solution:
         for n in time:
             mod[n % 60] += 1
         pairs = 0
-        if mod[0]:
+        if mod[0] > 1:
             pairs += fac(mod[0]) // (2 * fac(mod[0] - 2))
-        if mod[30]:
+        if mod[30] > 1:
             pairs += fac(mod[30]) // (2 * fac(mod[30] - 2))
         for i in range(1, 30):
             pairs += mod[i] * mod[60 - i]
