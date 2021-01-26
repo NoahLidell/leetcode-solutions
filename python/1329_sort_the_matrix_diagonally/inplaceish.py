@@ -23,13 +23,15 @@ Constraints:
     1 <= mat[i][j] <= 100
 
 """
+
+
 class Solution:
     def diagonalSort(self, mat: List[List[int]]) -> List[List[int]]:
         m = len(mat)
         n = len(mat[0])
         mi = m
         ni = 0
-        
+
         while mi >= 0 and ni < n:
             i = mi
             j = ni
@@ -49,5 +51,5 @@ class Solution:
                 ni += 1
             else:
                 mi -= 1
-        
+
         return mat
